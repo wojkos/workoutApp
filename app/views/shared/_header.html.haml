@@ -1,0 +1,29 @@
+%nav.navbar.navbar-expand-lg.navbar-light.bg-light.fixed-top
+  = link_to "Athletes Den", root_path, class: "navbar-brand"
+  %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
+    %span.navbar-toggler-icon
+  #navbarSupportedContent.collapse.navbar-collapse
+    %ul.navbar-nav.mr-auto
+      %li.active
+        = link_to "Home", root_path
+        -# = form_tag(search_dashboards_path, 
+        -#   class: "form-inline.my-2.my-lg-0",
+        -#   role: "search") do               
+        -#   .form-group
+        -#     = text_field_tag :search_name, nil, placeholder:
+        -#       "Search for friends", class: "form-control"   
+        -#   = submit_tag "Search", class: 'btn btn-default'
+    %ul.navbar-nav.ml-auto
+      - unless user_signed_in?
+        %li
+          = link_to "Sign up", new_user_registration_path
+        %li
+          = link_to "Sign in", new_user_session_path
+      - else
+        %li
+          -# = link_to "My Lounge", user_exercises_path(current_user)
+        %li
+          = link_to "Sign out", destroy_user_session_path, method: :delete
+    - if current_user
+      %span.navbar-text
+        Signed in as #{current_user.email}

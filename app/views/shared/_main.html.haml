@@ -1,0 +1,8 @@
+%div{class: content_for?(:whole_page) ? 'container-fluid' :  'container'}
+  .row
+    .col-md-12
+      - flash.each do |key, message|
+        %div{class: "text-center alert alert-#{key == 'notice' ? 'success' : 'danger'}"}
+          = message
+      = yield
+      = yield :whole_page
