@@ -1,12 +1,11 @@
 class ExercisesController < ApplicationController 
+  before_action :set_exercise, only: [:show, :edit, :update, :destroy, :toggle_status]
   
   def index
     @exercises = current_user.exercises.all
   end
 
-  def show
-    @exercise = current_user.exercises.find(params[:id])
-  end
+  def show;  end
 
   def new
     @exercise = current_user.exercises.new
@@ -22,9 +21,29 @@ class ExercisesController < ApplicationController
       flash.now[:alert] = 'Exercise has not been created'
       render :new
     end
-  end 
+  end
+
+  def edit;  end
+
+  def update
+    
+    if @exercise.update(exercise_params)
+      flash[:notice] = 'Exercise has been updated'
+      redirect_to [current_user, @exercise]
+    else
+      flash.now[:alert] = 'Exercise has not been updated'
+      render :edit
+    end
+  end
+
+  def destroy
+  end
 
   private
+
+  def set_exercise
+    @exercise = current_user.exercises.find(params[:id])
+  end
 
   def exercise_params
     params.require(:exercise).permit(:duration, :workout, :workout_date, :user_id)
