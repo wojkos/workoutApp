@@ -15,7 +15,7 @@ RSpec.feature "Listing Exercises" do
                                   workout: "Weight lifting",
                                   workout_date: 2.days.ago)
                                   
-    @following = Friendship.create(user: @john, friend: @sarah)
+    # @following = Friendship.create(user: @john, friend: @sarah)
 
   end
   
