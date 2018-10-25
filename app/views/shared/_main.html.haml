@@ -1,5 +1,5 @@
 %div{class: content_for?(:whole_page) ? 'container-fluid' :  'container'}
-  .row
+  .row{style: 'margin-top:150px;'}
     .col-md-12
       - flash.each do |key, message|
         %div{class: "text-center alert alert-#{key == 'notice' ? 'success' : 'danger'}"}

@@ -1,0 +1,8 @@
+.row.search-result
+  %h2 Search result
+  -@athletes.each do |athlete|
+    .col-md-10.well.member
+      aaa
+      =athlete.full_name
+   
+= will_paginate(@athletes, renderer: BootstrapPagination::Rails, class: 'pull-left paginate')

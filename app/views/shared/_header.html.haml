@@ -6,13 +6,10 @@
     %ul.navbar-nav.mr-auto
       %li.active
         = link_to "Home", root_path
-        -# = form_tag(search_dashboards_path, 
-        -#   class: "form-inline.my-2.my-lg-0",
-        -#   role: "search") do               
-        -#   .form-group
-        -#     = text_field_tag :search_name, nil, placeholder:
-        -#       "Search for friends", class: "form-control"   
-        -#   = submit_tag "Search", class: 'btn btn-default'
+        = form_tag(search_dashboards_path, class: "form-inline.my-2.my-lg-0", role: "search") do 
+          .form-group
+            = text_field_tag(:search_name, nil, placeholder: "Search for friends", class: "form-control") 
+          = submit_tag "Search", class: 'btn btn-default'
     %ul.navbar-nav.ml-auto
       - unless user_signed_in?
         %li

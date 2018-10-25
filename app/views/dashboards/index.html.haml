@@ -5,9 +5,9 @@
 .row
   .col-md-10
     %h2 List of Members
-    =will_paginate @athleties, render: BootstrapPagination::Rails, class: 'pull-left paginate'
+    =will_paginate @athletes, renderer: BootstrapPagination::Rails, class: 'pull-left paginate'
 
 .row
-  -@athleties.each do |athlete|
+  -@athletes.each do |athlete|
     .col-md-10.well.member
       =athlete.full_name
