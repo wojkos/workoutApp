@@ -1,6 +1,6 @@
 class DashboardsController < ApplicationController 
   
   def index
-    @athleties = User.all
+    @athleties = User.paginate(page: params[:page])
   end
 end

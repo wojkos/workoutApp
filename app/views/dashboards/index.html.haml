@@ -5,6 +5,7 @@
 .row
   .col-md-10
     %h2 List of Members
+    =will_paginate @athleties, render: BootstrapPagination::Rails, class: 'pull-left paginate'
 
 .row
   -@athleties.each do |athlete|
