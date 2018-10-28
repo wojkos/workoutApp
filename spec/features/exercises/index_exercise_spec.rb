@@ -15,7 +15,7 @@ RSpec.feature "Listing Exercises" do
                                   workout: "Weight lifting",
                                   workout_date: 2.days.ago)
                                   
-    # @following = Friendship.create(user: @john, friend: @sarah)
+    @following = Friendship.create(user: @john, friend: @sarah)
 
   end
   
@@ -37,20 +37,26 @@ RSpec.feature "Listing Exercises" do
   scenario "shows no exercises if none created" do
     @john.exercises.delete_all
     
-    visit '/'
+    visit '/'  scenario "shows a list of user's friends" do
+      visit "/"
+      
+      click_link "My Lounge"
+      expect(page).to have_content("My Friends")
+      expect(page).to have_link(@sarah.full_name)
+      expect(page).to have_link("Unfollow")
+    end
     
     click_link 'My Lounge'
     
     expect(page).to have_content('No Workouts Yet')
   end
   
-  # scenario "shows a list of user's friends" do
-  #   visit "/"
+  scenario "shows a list of user's friends" do
+    visit "/"
     
-  #   click_link "My Lounge"
-  #   expect(page).to have_content("My Friends")
-  #   expect(page).to have_link(@sarah.full_name)
-  #   expect(page).to have_link("Unfollow")
-  # end
-  
+    click_link "My Lounge"
+    expect(page).to have_content("My Friends")
+    expect(page).to have_link(@sarah.full_name)
+    expect(page).to have_link("Unfollow")
+  end
 end
