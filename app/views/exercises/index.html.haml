@@ -29,7 +29,7 @@
   %p GRAPH
   = content_tag(:div, '', id: 'chart', data: { workouts: @exercises })
 .col-md-4.col-xs-12
-  %h1.text-center My friends
+  %h1.text-center My Friends
   -@friends.each do |friend|
     .col-md-offset-3.col-md-6.friend_name
       =link_to(friend.full_name, friendship_path(current_user.current_friendship(friend)))

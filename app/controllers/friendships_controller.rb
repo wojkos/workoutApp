@@ -14,6 +14,14 @@ def create
 end
 
 def destroy
+  @friendship = Friendship.find(params[:id])
+  friend_name = @friendship.friend.full_name
+  if @friendship.destroy
+    flash[:notice] = "#{friend_name} unfollowed"
+  else
+    flash[:notice] = "#{friend_name} could not be unfollowed"
+  end
+  redirect_to user_exercises_path(current_user)
 end
 
 private

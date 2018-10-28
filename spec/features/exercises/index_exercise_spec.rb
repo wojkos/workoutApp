@@ -37,14 +37,7 @@ RSpec.feature "Listing Exercises" do
   scenario "shows no exercises if none created" do
     @john.exercises.delete_all
     
-    visit '/'  scenario "shows a list of user's friends" do
-      visit "/"
-      
-      click_link "My Lounge"
-      expect(page).to have_content("My Friends")
-      expect(page).to have_link(@sarah.full_name)
-      expect(page).to have_link("Unfollow")
-    end
+    visit '/'
     
     click_link 'My Lounge'
     

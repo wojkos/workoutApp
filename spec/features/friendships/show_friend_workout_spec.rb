@@ -12,10 +12,10 @@ RSpec.feature "Showing Friend Workout" do
                         email: "sarah@example.com",
                         password: "password")
 
-    @e1 = @john.exercises.create(duration_in_min: 74,
+    @e1 = @john.exercises.create(duration: 74,
                                 workout: "My body building activity",
                                 workout_date: Date.today)
-    @e2 = @sarah.exercises.create(duration_in_min: 55,
+    @e2 = @sarah.exercises.create(duration: 55,
                                 workout: "Weight lifting",
                                 workout_date: Date.today)
     login_as(@john)
