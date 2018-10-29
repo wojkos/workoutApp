@@ -1,8 +1,9 @@
-class ExercisesController < ApplicationController 
+class ExercisesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_exercise, only: [:show, :edit, :update, :destroy, :toggle_status]
   
   def index
-    @exercises = current_user.exercises.all
+    @exercises = current_user.exercises
     @friends = current_user.friends
     set_current_room
     @message = Message.new

@@ -16,7 +16,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'haml', '~> 5.0', '>= 5.0.4'
-gem 'bootstrap', '~> 4.1.3'
+gem 'bootstrap-sass', '~>3.3.6'
 gem 'devise'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'

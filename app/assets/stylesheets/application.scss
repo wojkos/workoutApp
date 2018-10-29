@@ -1,3 +1,4 @@
+@import "bootstrap-sprockets";
 @import "bootstrap";
 @import "jquery-ui/datepicker";
 
@@ -10,18 +11,10 @@ body {
 }
 .navbar-header a.navbar-brand {
   color: #ffffff;
-  padding-top: 25px;
-  padding-bottom: 50px;
   font-size: 150%;
   font-weight: bold;
 }
-.navbar-header a.navbar-brand:hover {
-  color: #ff0000;
-}
-nav > li > a {
-  padding-top: 25px;
-  padding-bottom: 30px;
-}
+
 .navbar-default .navbar-nav > .active > a {
   background: orange;
   color: #ffffff;
