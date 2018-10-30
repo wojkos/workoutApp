@@ -9,7 +9,7 @@
 
 .row
   -@athletes.each do |athlete|
-    .col-md-10.well.member
+    .col-md-10.col-md-offset-2.well.member
       =athlete.full_name
       - if current_user
         = link_to('Follow', friendships_path(friend_id: athlete.id), method: :post, class: 'btn btn-success pull-right') unless current_user.follow_or_same?(athlete)
