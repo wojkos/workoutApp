@@ -1,4 +1,4 @@
--content_for(:whole_page) do
+- content_for(:whole_page) do
   .col-md-7.col-xs-12
     - unless @exercises.empty?
       %h1 Listing Exercises
@@ -15,40 +15,41 @@
               %td= exercise.duration
               %td= truncate(exercise.workout, length: 100)
               %td= exercise.workout_date
-              %td= link_to('Show', [current_user, exercise])
-              %td= link_to('Edit', [:edit, current_user, exercise])
-              %td= link_to('Destroy', [current_user, exercise],
-                  method: :delete, data: { confirm: 'Are you sure?' })
+              %td= link_to 'Show', [current_user, exercise]
+              %td= link_to 'Edit', [:edit, current_user, exercise]
+              %td= link_to 'Destroy', [current_user, exercise],        |
+                  method: :delete, data: { confirm: 'Are you sure?' } |
       %br/
       %br/
     - else
       .alert.alert-danger.message-font.text-center{:role => "alert"}
         No Workouts Yet
       %br/
-    = link_to 'New Workout', new_user_exercise_path(current_user),
-      class: "btn btn-success link"
-    = content_tag(:div, '', id: 'chart', data: { workouts: @exercises })
+    = link_to 'New Workout', new_user_exercise_path(current_user), |
+      class: "btn btn-success link"                                |
+    = content_tag :div, "", id: "chart", data: { workouts: @exercises }
   .col-md-5.col-xs-12
     #chat-window.col-md-12
-      %header.text-center Channel: #{current_room.name}
+      %header.text-center
+        Channel: #{current_room.name}
       #followers.col-md-2
-        -@followers.each do |follower|
-          = link_to(follower.user.full_name, user_exercises_path(current_user, roomId: follower.user.room.id), class: 'followers')
-          %br
+        - @followers.each do |follower|
+          = link_to follower.user.full_name, user_exercises_path(current_user, roomId: follower.user.room.id), class: 'followers'
+          %br/
       #messages-box.col-md-10
-        #chat-box{ 'data-channel': 'rooms', 'data-room-id': current_room.id}
-          -@messages.each do |message|
-            =render partial: 'shared/message', locals: { message: message }
-        
+        #chat-box{"data-channel" => "rooms", "data-room-id" => current_room.id }
+          - @messages.each do |message|
+            = render partial: 'shared/message', locals: { message: message }
         #form-box
-          = form_for(@message) do |f|
+          = form_for @message, remote: true do |f|
             = f.text_field :body, id: 'message-field', class: 'form-control pull-left'
             = f.submit 'Post', class: 'btn btn-default', id: 'post-btn'
-      
     %h1.text-center My Friends
-    -@friends.each do |friend|
+    - @friends.each do |friend|
       .col-md-offset-3.col-md-6.friend_name
-        =link_to(friend.full_name, friendship_path(current_user.current_friendship(friend)))
+        = link_to friend.full_name, friendship_path(current_user.current_friendship(friend))
       .col-md-3
         .btn-unfollow
-          =link_to('Unfollow', friendship_path(current_user.current_friendship(friend)), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-danger')
+          = link_to "Unfollow", friendship_path(current_user.current_friendship(friend)), |
+            method: :delete, data: { confirm: "Are you sure?" },                          |
+            class: "btn btn-success link"                                                 |
